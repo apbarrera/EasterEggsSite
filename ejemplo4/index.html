@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script>
+        function agregar() {
+            // Obtener los valores del formulario
+            const name = document.getElementById("inputName").value;
+            const age = document.getElementById("inputAge").value;
+            const swiftieYes = document.getElementById("swiftieYes").checked;
+            const swiftieYesEnglish = document.getElementById("swiftieYesEnglish").checked;
+            const era = document.getElementById("inputEra").value;
+            const album = document.getElementById("inputAlbum").value;
+            const easterEgg = document.getElementById("inputEasterEgg").value;
+
+            const swiftie = swiftieYes ? "Sí" : swiftieYesEnglish ? "Yes" : "No";
+
+            // Obtener la tabla y el cuerpo de la tabla
+            const table = document.getElementById("responseTable");
+
+            // Crear una nueva fila
+            const row = table.insertRow();
+
+            // Crear y agregar las celdas a la fila
+            const cell1 = row.insertCell(0); // Número (automático)
+            const cell2 = row.insertCell(1); // Nombre
+            const cell3 = row.insertCell(2); // Edad
+            const cell4 = row.insertCell(3); // ¿Eres Swiftie?
+            const cell5 = row.insertCell(4); // Era favorita
+            const cell6 = row.insertCell(5); // Álbum favorito
+            const cell7 = row.insertCell(6); // Easter Egg
+
+            // Asignar los valores a las celdas
+            cell1.textContent = table.rows.length; // Número automático
+            cell2.textContent = name;
+            cell3.textContent = age;
+            cell4.textContent = swiftie;
+            cell5.textContent = era;
+            cell6.textContent = album;
+            cell7.textContent = easterEgg;
+
+            // Limpiar los campos del formulario después de agregar
+            document.getElementById("inputName").value = "";
+            document.getElementById("inputAge").value = "";
+            document.getElementById("swiftieYes").checked = false;
+            document.getElementById("swiftieYesEnglish").checked = false;
+            document.getElementById("inputEra").value = "Elige...";
+            document.getElementById("inputAlbum").value = "Elige...";
+            document.getElementById("inputEasterEgg").value = "";
+        }
+    </script>
+</head>
+  <body class="bg-info-subtle">
+  <!-- Título -->
+    <h1 class="text-center">Registro de Easter Eggs (Taylor's Version)!</h1>
+    <div class="container text-center">
+      <div class="row align-items-end">
+        <div class="col">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="inputName" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="inputName" placeholder="">
+            </div>
+            <div class="col-md-6">
+              <label for="inputAge" class="form-label">Edad</label>
+              <input type="number" class="form-control" id="inputAge" min="1" max="100">
+            </div>
+            
+            <div class="col-12">
+              <label class="form-label">¿Eres swiftie?</label>
+              <div class="d-flex gap-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="swiftieCheck" id="swiftieYes" value="si">
+                  <label class="form-check-label" for="swiftieYes">Sí</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="swiftieCheck" id="swiftieYesEnglish" value="yes">
+                  <label class="form-check-label" for="swiftieYesEnglish">Yes</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="inputEra" class="form-label">Era favorita</label>
+              <select id="inputEra" class="form-select">
+                <option selected>Elige...</option>
+                <option>Debut</option>
+                <option>Fearless</option>
+                <option>Speak Now</option>
+                <option>Red</option>
+                <option>1989</option>
+                <option>Reputation</option>
+                <option>Lover</option>
+                <option>Folklore</option>
+                <option>Evermore</option>
+                <option>Midnights</option>
+                <option>TTPD</option>
+              </select>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="inputAlbum" class="form-label">Álbum favorito</label>
+              <select id="inputAlbum" class="form-select">
+                <option selected>Elige...</option>
+                <option>Taylor Swift</option>
+                <option>Fearless (Taylor's Version)</option>
+                <option>Speak Now (Taylor's Version)</option>
+                <option>Red (Taylor's Version)</option>
+                <option>1989 (Taylor's Version)</option>
+                <option>Reputation</option>
+                <option>Lover</option>
+                <option>Folklore</option>
+                <option>Evermore</option>
+                <option>Midnights</option>
+                <option>TTPD</option>
+              </select>
+            </div>
+          
+            <div class="col-12">
+              <label for="inputEasterEgg" class="form-label">Easter Egg</label>
+              <input type="text" class="form-control" id="inputEasterEgg" placeholder="Una referencia secreta a Taylor">
+            </div>
+            
+            <div class="col-12">
+              <button type="button" class="btn btn-primary" onclick="agregar();">Agregar</button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="col">
+          <!-- Tabla con los resultados -->
+          <div class="container mt-5">
+            <h2 class="text-center">Respuestas Enviadas</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Edad</th>
+                  <th scope="col">¿Eres Swiftie?</th>
+                  <th scope="col">Era Favorita</th>
+                  <th scope="col">Álbum Favorito</th>
+                  <th scope="col">Easter Egg</th>
+                </tr>
+              </thead>
+              <tbody id="responseTable">
+                <!-- Las filas con las respuestas se insertarán aquí -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
